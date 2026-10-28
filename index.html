@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>삿포로 · 2박 3일 (2026.11.28–30)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --midnight:#122238;      /* 밤하늘 남색 */
+  --midnight-2:#1b3050;
+  --ink:#22334a;           /* 본문 잉크 */
+  --muted:#6b7c92;
+  --snow:#eef3f7;          /* 설원 배경 */
+  --paper:#ffffff;
+  --line:#d8e2ea;
+  --amber:#d9822b;         /* 숯불 랜턴 */
+  --amber-soft:#fdf3e6;
+  --steam:#3e88a0;         /* 온천 김 청록 */
+  --steam-soft:#e7f2f6;
+  --alert:#b8452f;         /* 결항 알림 */
+  --alert-soft:#fbeeec;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Noto Sans KR',sans-serif;
+  color:var(--ink);
+  background:var(--snow);
+  line-height:1.6;
+  font-size:15px;
+}
+.page{max-width:960px;margin:0 auto;background:var(--snow);}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(1200px 500px at 85% -10%, #24405f 0%, transparent 60%),
+    radial-gradient(900px 420px at 5% 110%, #1d3557 0%, transparent 55%),
+    var(--midnight);
+  color:#eef4fa;
+  padding:56px 48px 44px;
+  overflow:hidden;
+}
+.snow{position:absolute;inset:0;pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 12% 22%, rgba(255,255,255,.55) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 28% 64%, rgba(255,255,255,.4) 50%, transparent 51%),
+    radial-gradient(2.5px 2.5px at 41% 15%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 57% 42%, rgba(255,255,255,.35) 50%, transparent 51%),
+    radial-gradient(2px 2px at 66% 78%, rgba(255,255,255,.45) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 78% 28%, rgba(255,255,255,.5) 50%, transparent 51%),
+    radial-gradient(2px 2px at 90% 60%, rgba(255,255,255,.4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 8% 80%, rgba(255,255,255,.35) 50%, transparent 51%),
+    radial-gradient(2px 2px at 50% 90%, rgba(255,255,255,.3) 50%, transparent 51%);
+}
+.hero .eyebrow{
+  font-size:12px;letter-spacing:.32em;text-transform:uppercase;
+  color:#9db8d4;margin-bottom:14px;font-weight:500;
+}
+.hero h1{
+  font-family:'Noto Serif KR','Gowun Batang',serif;
+  font-size:44px;line-height:1.2;font-weight:900;letter-spacing:.01em;
+}
+.hero h1 em{font-style:normal;color:#f2b96a;}
+.hero .dates{
+  margin-top:12px;font-family:'Gowun Batang',serif;
+  font-size:17px;color:#c9d9ea;letter-spacing:.06em;
+}
+/* 노선 리본 */
+.ribbon{
+  margin-top:30px;display:flex;align-items:center;gap:0;
+  flex-wrap:nowrap;
+}
+.stop{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:64px;}
+.stop .dot{
+  width:44px;height:44px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;letter-spacing:.04em;
+  background:rgba(255,255,255,.06);
+}
+.stop.hot .dot{border-color:#f2b96a;color:#f2b96a;background:rgba(242,185,106,.12);}
+.stop .lbl{font-size:11px;color:#9db8d4;white-space:nowrap;}
+.leg{flex:1;border-top:1.5px dashed rgba(255,255,255,.35);position:relative;top:-11px;min-width:34px;}
+.leg.dash-amber{border-top-color:#f2b96a;}
+.hero .chips{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+  font-size:12px;padding:6px 12px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);color:#d7e4f2;
+  background:rgba(255,255,255,.05);
+}
+.chip.amber{border-color:#f2b96a;color:#f6c983;background:rgba(242,185,106,.1);}
+.chip b{font-weight:700;color:#fff;}
+
+/* ---------- 공통 섹션 ---------- */
+.wrap{padding:40px 48px 8px;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;}
+.sec-no{
+  font-family:'Gowun Batang',serif;font-size:15px;color:var(--steam);
+  border:1px solid var(--steam);border-radius:50%;
+  width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;
+  flex:none;align-self:center;
+}
+.sec-head h2{
+  font-family:'Noto Serif KR','Gowun Batang',serif;
+  font-size:24px;font-weight:900;color:var(--midnight);
+}
+.sec-head .sub{font-size:12.5px;color:var(--muted);margin-left:auto;text-align:right;}
+
+/* ---------- 항공 ---------- */
+.flights{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.f-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;position:relative;
+  box-shadow:0 1px 2px rgba(18,34,56,.05);
+}
+.f-card .tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;
+  padding:3px 10px;border-radius:999px;margin-bottom:10px;
+}
+.tag.out{background:var(--steam-soft);color:var(--steam);}
+.tag.ret{background:var(--amber-soft);color:var(--amber);}
+.f-card .airline{font-weight:700;font-size:16px;color:var(--midnight);}
+.f-card .flightno{font-size:12.5px;color:var(--muted);margin-left:6px;}
+.f-card .times{
+  display:flex;align-items:center;gap:12px;margin:14px 0 10px;
+  font-family:'Gowun Batang',serif;
+}
+.f-card .times .t{font-size:26px;font-weight:700;color:var(--midnight);}
+.f-card .times .apt{font-size:12px;color:var(--muted);display:block;letter-spacing:.02em;}
+.f-card .times .arrow{flex:1;border-top:1.5px dashed var(--line);position:relative;}
+.f-card .times .arrow::after{
+  content:"";position:absolute;right:0;top:-3.5px;width:7px;height:7px;
+  border-top:1.5px solid var(--line);border-right:1.5px solid var(--line);
+  transform:rotate(45deg);
+}
+.f-card .note{font-size:12.5px;color:var(--muted);}
+.f-card .note b{color:var(--ink);font-weight:500;}
+.alert{
+  margin-top:16px;background:var(--alert-soft);border-left:4px solid var(--alert);
+  border-radius:10px;padding:14px 18px;font-size:13px;color:#5d3a32;
+}
+.alert b{color:var(--alert);}
+.alt-flights{
+  margin-top:16px;background:var(--paper);border:1px dashed var(--line);
+  border-radius:10px;padding:13px 18px;font-size:12.5px;color:var(--muted);
+}
+.alt-flights b{color:var(--ink);font-weight:500;}
+
+/* ---------- 타임라인 ---------- */
+.day{margin-bottom:36px;}
+.day-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;}
+.day-head .d-no{
+  font-family:'Gowun Batang',serif;font-size:13px;color:#fff;background:var(--midnight);
+  border-radius:999px;padding:4px 14px;letter-spacing:.05em;flex:none;
+}
+.day-head h3{font-family:'Noto Serif KR','Gowun Batang',serif;font-size:20px;font-weight:900;color:var(--midnight);}
+.day-head .d-sub{font-size:12.5px;color:var(--muted);margin-left:auto;}
+.ev{position:relative;padding:0 0 14px 138px;}
+.ev:last-child{padding-bottom:0;}
+.ev .time{
+  position:absolute;left:0;top:1px;width:84px;text-align:right;
+  font-family:'Gowun Batang',serif;font-weight:700;font-size:14px;color:var(--steam);
+}
+.ev::before{
+  content:"";position:absolute;left:96px;top:6px;bottom:-4px;
+  border-left:1.5px dashed #b9cad8;
+}
+.ev:last-child::before{display:none;}
+.ev .node{
+  position:absolute;left:92.5px;top:5px;width:8px;height:8px;border-radius:50%;
+  background:var(--steam);
+}
+.ev.move .node{background:transparent;border:1.5px dashed #b9cad8;width:7px;height:7px;}
+.ev .map-btn{
+  position:absolute;left:106px;top:-2px;width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(165,205,219,.55);background:rgba(165,205,219,.10);color:var(--steam);
+  transition:background .15s,color .15s,border-color .15s;text-decoration:none;
+}
+.ev .map-btn:hover{background:rgba(242,185,106,.18);color:#f2b96a;border-color:#f2b96a;}
+.ev .map-btn svg{display:block;}
+
+.ev .what{font-weight:500;font-size:14.5px;color:var(--ink);}
+.ev .what b{font-weight:700;}
+.ev .detail{font-size:12.5px;color:var(--muted);margin-top:2px;}
+.ev .detail .v{
+  color:var(--steam);font-weight:500;
+}
+.ev .badge{
+  display:inline-block;font-size:10.5px;font-weight:700;color:var(--steam);
+  border:1px solid #a5cddb;border-radius:999px;padding:1px 8px;margin-left:6px;
+  background:var(--steam-soft);vertical-align:1.5px;
+}
+.ev .badge.warn{color:var(--amber);border-color:#ecc9a1;background:var(--amber-soft);}
+
+/* ---------- 료칸 ---------- */
+.ryokan-card{
+  display:grid;grid-template-columns:1.25fr .9fr;gap:0;
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+}
+.ry-main{padding:26px 28px;}
+.ry-side{background:var(--steam-soft);padding:26px 24px;border-left:1px solid var(--line);}
+.ry-main .kicker{font-size:11.5px;letter-spacing:.2em;color:var(--steam);font-weight:700;margin-bottom:8px;}
+.ry-main h3{font-family:'Noto Serif KR','Gowun Batang',serif;font-size:23px;font-weight:900;color:var(--midnight);}
+.ry-main .jp{font-size:13px;color:var(--muted);margin-top:2px;font-family:'Gowun Batang',serif;}
+.ry-main p{font-size:13.5px;color:#41546c;margin-top:12px;}
+.ry-main ul{margin-top:12px;list-style:none;}
+.ry-main li{
+  font-size:13px;color:#41546c;padding:5px 0 5px 18px;position:relative;
+}
+.ry-main li::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;border-radius:50%;background:var(--steam);opacity:.5;}
+.ry-side .price{font-family:'Gowun Batang',serif;font-size:22px;font-weight:700;color:var(--midnight);}
+.ry-side .price small{font-size:12px;font-weight:400;color:var(--muted);display:block;margin-top:2px;}
+.ry-side .divider{border:none;border-top:1px dashed #b9d3dd;margin:16px 0;}
+.ry-side h4{font-size:12px;letter-spacing:.12em;color:var(--steam);font-weight:700;margin-bottom:6px;}
+.ry-side p, .ry-side li{font-size:12.5px;color:#41546c;}
+.ry-side ul{list-style:none;}
+.ry-side li{padding:3px 0;}
+.verified{
+  margin-top:14px;font-size:11.5px;color:var(--steam);
+  display:inline-flex;align-items:center;gap:6px;
+}
+.verified::before{
+  content:"";width:12px;height:12px;border-radius:50%;
+  background:var(--steam);opacity:.85;
+  clip-path:polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 38% 62%);
+  opacity:1;
+}
+.ry-alts{margin-top:14px;font-size:12.5px;color:var(--muted);background:var(--paper);
+  border:1px dashed var(--line);border-radius:10px;padding:12px 18px;}
+.ry-alts b{color:var(--ink);font-weight:500;}
+
+/* ---------- 맛집 ---------- */
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.food-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;position:relative;overflow:hidden;
+}
+.food-card .cat{
+  font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;
+  background:var(--steam);border-radius:4px;padding:2px 8px;display:inline-block;margin-bottom:10px;
+}
+.food-card.night .cat{background:var(--midnight);}
+.food-card h4{font-size:17px;font-weight:700;color:var(--midnight);line-height:1.35;}
+.food-card h4 span{font-size:12px;color:var(--muted);font-weight:400;margin-left:6px;}
+.food-card .addr{font-size:12px;color:var(--muted);margin-top:2px;}
+.food-card .hours{
+  margin-top:12px;background:var(--snow);border-radius:8px;padding:10px 14px;
+  font-size:12.5px;color:#41546c;
+}
+.food-card .hours b{color:var(--midnight);font-weight:700;}
+.food-card .hours .rest{color:var(--alert);}
+.food-card .eat{font-size:12.5px;color:var(--muted);margin-top:10px;}
+.food-card .eat b{color:var(--amber);font-weight:700;}
+.stamp{
+  position:absolute;top:16px;right:16px;width:64px;height:64px;border-radius:50%;
+  border:1.5px dashed var(--steam);color:var(--steam);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:9.5px;font-weight:700;text-align:center;line-height:1.3;
+  transform:rotate(8deg);background:rgba(62,136,160,.06);
+}
+.stamp.warn{border-color:var(--amber);color:var(--amber);background:rgba(217,130,43,.06);}
+.stamp .big{font-size:12.5px;letter-spacing:.02em;}
+
+/* ---------- 팁 ---------- */
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.tip{
+  background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 20px;
+  font-size:12.5px;color:#41546c;
+}
+.tip h5{
+  font-size:13px;color:var(--midnight);font-weight:700;margin-bottom:5px;
+  display:flex;align-items:center;gap:8px;
+}
+.tip h5::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber);flex:none;}
+.checklist{
+  grid-column:1 / -1;background:var(--midnight);color:#d7e4f2;
+  border-radius:14px;padding:22px 26px;
+}
+.checklist h5{font-family:'Noto Serif KR','Gowun Batang',serif;font-size:16px;font-weight:900;color:#fff;margin-bottom:12px;}
+.checklist .cols{display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;}
+.checklist .item{font-size:13px;padding:5px 0 5px 24px;position:relative;color:#c9d9ea;}
+.checklist .item::before{
+  content:"";position:absolute;left:2px;top:10px;width:11px;height:11px;
+  border:1.5px solid #f2b96a;border-radius:3px;
+}
+
+/* ---------- 푸터 ---------- */
+footer{
+  margin-top:36px;padding:24px 48px 40px;
+  font-size:11.5px;color:var(--muted);line-height:1.7;
+}
+footer .src{color:#7d8ea3;word-break:break-all;}
+@media (max-width:720px){
+  .hero{padding:40px 24px;}
+  .wrap{padding:32px 24px 8px;}
+  footer{padding:20px 24px 36px;}
+  .hero h1{font-size:32px;}
+  .flights,.food-grid,.tips{grid-template-columns:1fr;}
+  .ryokan-card{grid-template-columns:1fr;}
+  .ry-side{border-left:none;border-top:1px solid var(--line);}
+  .ev{padding-left:0;padding-top:22px;}
+  .ev .time{position:static;display:inline-block;text-align:left;vertical-align:middle;}
+  .ev .map-btn{position:static;display:inline-flex;margin-left:10px;vertical-align:middle;}
+  .ev::before,.ev .node{display:none;}
+  .sec-head .sub{display:none;}
+  .checklist .cols{grid-template-columns:1fr;}
+}
+  /* ---------- 체크리스트(개편) ---------- */
+  .hero{padding-top:34px;padding-bottom:30px;}
+  .hero .chips{margin-top:0;}
+  .cl-grid{display:grid;grid-template-columns:1.05fr 1.25fr .95fr;gap:14px;}
+  .cl-card{border:1px solid rgba(255,255,255,.16);background:#132844;border-radius:14px;padding:16px 18px;}
+  .cl-card h5{font-size:13.5px;font-weight:900;letter-spacing:.02em;color:#ffd28a;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .cl-card .ok{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:rgba(111,211,154,.18);border:1.5px solid #6fd39a;color:#6fd39a;font-size:11px;flex:none;}
+  .cl-card .item{font-size:13px;line-height:1.6;padding:6px 0 6px 18px;position:relative;color:#f4f9ff;border-bottom:1px dashed rgba(255,255,255,.12);}
+  .cl-card .item:last-child{border-bottom:none;}
+  .cl-card .item::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;border-radius:2px;background:rgba(255,255,255,.55);}
+  .cl-card.done .item::before{background:transparent;border:1.5px solid #6fd39a;border-radius:50%;}
+  .cl-card.todo{border-color:#f2b96a;background:#3a2708;}
+  .cl-card.todo .item::before{background:#f2b96a;border-radius:50%;}
+  .cl-card.local .item::before{border-radius:50%;background:rgba(255,255,255,.55);}
+  .cl-card b{color:#ffffff;}
+  .cl-card.todo b{color:#ffd28a;}
+  @media(max-width:900px){.cl-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="snow"></div>
+    <div class="chips">
+      <div class="chip">가는 날 <b>대한항공 KE765</b> · 인천 10:05 → 신치토세 12:50 · <b>예약 완료</b></div>
+      <div class="chip">오는 날 <b>대한항공 KE766</b> · 신치토세 16:55 → 인천 20:10 · <b>예약 완료</b></div>
+      <div class="chip amber">D1 숙박 삿포로 스트림 호텔 11/28 예약 완료 · 조식+스파 포함</div>
+      <div class="chip amber">D2 숙박 정산온천 조잔케이 다이이치호텔 <b>스이잔테이</b> 11/29 예약 완료</div>
+      <div class="chip amber">D1 저녁 蟹座(카니자) 11/28 18:30 예약 완료 · 게·우설&amp;와규 무한리필</div>
+      <div class="chip amber">D2 점심 하코다테 우니무라카미 11/29 12:45 예약 완료 · 좌석만 2인</div>
+      <div class="chip">삿포로 화이트 일루미네이션 시즌 (11/20 개최 시작)</div>
+    </div>
+  </header>
+
+  <!-- ================= 01 항공 ================= -->
+  <section class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2>항공 — 예약 완료</h2>
+    </div>
+
+    <div class="flights">
+      <div class="f-card">
+        <span class="tag out">가는 날 · 11/28 (토)</span>
+        <div><span class="airline">대한항공</span><span class="flightno">KE765 · 2인</span></div>
+        <div class="times">
+          <div><span class="t">10:05</span><span class="apt">인천 ICN</span></div>
+          <div class="arrow"></div>
+          <div><span class="t">12:50</span><span class="apt">신치토세 CTS</span></div>
+        </div>
+      </div>
+      <div class="f-card">
+        <span class="tag ret">오는 날 · 11/30 (월)</span>
+        <div><span class="airline">대한항공</span><span class="flightno">KE766 · 2인</span></div>
+        <div class="times">
+          <div><span class="t">16:55</span><span class="apt">신치토세 CTS</span></div>
+          <div class="arrow"></div>
+          <div><span class="t">20:10</span><span class="apt">인천 ICN</span></div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ================= 02 일정 ================= -->
+  <section class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2>3일 동선 — 시간표</h2>
+    </div>
+
+    <div class="day">
+      <div class="day-head">
+        <span class="d-no">DAY 1</span>
+        <h3>11/28 (토) · 도착 — 삿포로 시내의 밤</h3>
+        <div class="d-sub">스트림 호텔 1박 · 蟹座 18:30 확정</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">10:05</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C1%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90" target="_blank" rel="noopener" aria-label="구글맵에서 인천국제공항 제1여객터미널 열기" title="구글맵 — 인천국제공항 제1여객터미널"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what">인천 출발 · <b>KE765</b></div>
+        <div class="detail">비행 약 2시간 45분 · 기내 점심</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">12:50</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%8D%83%E6%AD%B3%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener" aria-label="구글맵에서 新千歳空港 열기" title="구글맵 — 新千歳空港"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what">신치토세 공항 도착 → JR 쾌속 에어포트</div>
+        <div class="detail">입국·수하물 약 1시간 후 삿포로 방면 승차 · 최속 33분 · <span class="v">1,150엔</span> → 삿포로 ~14:10~14:30</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">14:30</span>
+        <div class="what">지하철 → 스스키노 (스스키노역 <b>출구5 직결</b>)</div>
+        <div class="detail"><span class="v">210엔</span> · 삿포로→스스키노 약 4분(2정거장)</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">15:00~</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=SAPPORO%20STREAM%20HOTEL" target="_blank" rel="noopener" aria-label="구글맵에서 SAPPORO STREAM HOTEL 열기" title="구글맵 — SAPPORO STREAM HOTEL"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>스트림 호텔 체크인</b><span class="badge">조식+스파 2인 포함</span></div>
+        <div class="detail">짐 풀고 잠시 휴식 — 18F 프리미엄 스파·사우나는 새벽 1시까지 · 예약 불필요</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">15:30</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%8B%B8%E5%B0%8F%E8%B7%AF%E5%95%86%E5%BA%97%E8%A1%97" target="_blank" rel="noopener" aria-label="구글맵에서 狸小路商店街 열기" title="구글맵 — 狸小路商店街"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what">시내 구경·쇼핑 — 탄키코지 · 오도리</div>
+        <div class="detail">간식만 가볍게 — <b>蟹座 무한리필 대비</b></div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">18:30</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8B%E3%81%AB%E9%A3%9F%E3%81%B9%E6%94%BE%E9%A1%8C%20%E8%9F%B9%E5%BA%A7%20%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener" aria-label="구글맵에서 かに食べ放題 蟹座 札幌 열기" title="구글맵 — かに食べ放題 蟹座 札幌"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>저녁 — かに食べ放題 蟹座 札幌</b> (킹크랩 등 게 무한)<span class="badge">예약 확정</span></div>
+        <div class="detail">엄선된 게·우설&amp;와규 샤부샤브 무한리필 <span class="v">¥13,000/인</span> · 南4西2빌딩 9F · 호텔에서 도보 약 4~6분 · 식대 당일 현장 결제</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">20:10</span>
+        <div class="what">식사 종료 → <b>오도리 공원</b> 이동 (도보 약 8~10분)</div>
+        <div class="detail">마켓 먹거리 노린다면 <b>바로 출발</b> — 음식 마감 <span class="v">20:45</span></div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">20:25</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%80%9A%E5%85%AC%E5%9C%92" target="_blank" rel="noopener" aria-label="구글맵에서 大通公園 열기" title="구글맵 — 大通公園"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>크리스마스 마켓 + 화이트 일루미네이션</b> 산책</div>
+        <div class="detail">뮌헨 크리스마스 시 오도리 1·2정목 회장(11/20~12/25 · <span class="v">11:00~21:00 · 음식 L.O. 20:45</span>) — 도착하면 <b>글뤼바인·먹거리 먼저</b> · 노점 마감 21:00 · <b>조명은 22:00까지</b></div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">21:30</span>
+        <div class="what">복귀 — 조명 아래 걸어 돌아오기 (도보 약 9~10분)</div>
+        <div class="detail">조명이 22:00까지라 시간 여유 충분</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">~21:45</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A2%E3%82%A4%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%A0Bar%20HOKKAIDO%20%E3%83%9F%E3%83%AB%E3%82%AF%E6%9D%91" target="_blank" rel="noopener" aria-label="구글맵에서 アイスクリームBar HOKKAIDO ミルク村 열기" title="구글맵 — アイスクリームBar HOKKAIDO ミルク村"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what">아이스크림바 — <b>HOKKAIDO 밀크무라</b> (호텔 옆 블록)</div>
+        <div class="detail">소프트 아이스크림 + 위스키·리큐르 드리즐 · 뉴호쿠세이빌딩 6F(남4조서3) · <span class="v">주문마감 23:00</span> · 월 휴무(토 영업) · 도보 방문 · <span class="v">011-219-6455</span></div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">~22:30</span>
+        <div class="what">귀객</div>
+        <div class="detail">기분 내키면 18F 스파·사우나 — 새벽 1시까지</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-head">
+        <span class="d-no">DAY 2</span>
+        <h3>11/29 (일) · 오타루 오전 — 정산온천의 밤</h3>
+        <div class="d-sub">스이잔테이 1박 · 짐은 호텔에 두고 빈손 이동</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">07:00</span>
+        <div class="what">호텔 조식 (7F 뷔페)<span class="badge">예약 포함</span></div>
+        <div class="detail"><span class="v">7:00~7:50</span> 식사 → 8시 체크아웃과 정확히 맞음</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">08:00</span>
+        <div class="what"><b>체크아웃 — 짐은 프론트에 보관</b><span class="badge">확정</span></div>
+        <div class="detail">오타루·점심 내내 <b>빈손 이동</b> · D3에도 같은 방식 사용</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">08:20</span>
+        <div class="what">지하철 스스키노→삿포로 → <b>JR 오타루행</b></div>
+        <div class="detail"><span class="v">210엔 + 750엔</span> · 직통 약 35분 → 오타루 ~09:05 도착</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">09:05</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B0%8F%E6%A8%BD%E9%81%8B%E6%B2%B3" target="_blank" rel="noopener" aria-label="구글맵에서 小樽運河 열기" title="구글맵 — 小樽運河"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>오타루 관광</b> — 오타루운하 · 오르골당 본관</div>
+        <div class="detail">약 2.5시간 여유 관광 (11/28 도착일 오타루 대신 <b>오전 슬롯으로 재배치</b>)</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">11:45</span>
+        <div class="what">JR 삿포로행 → 삿포로 ~12:20</div>
+        <div class="detail">도보 7분으로 점심집 이동 — <b>12:30 도착 권장</b></div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">12:45</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%87%BD%E9%A4%A8%E3%81%86%E3%81%AB%20%E3%82%80%E3%82%89%E3%81%8B%E3%81%BF%20%E6%97%A5%E6%9C%AC%E7%94%9F%E5%91%BD%E6%9C%AD%E5%B9%8C%E3%83%93%E3%83%AB%E5%BA%97" target="_blank" rel="noopener" aria-label="구글맵에서 函館うに むらかみ 日本生命札幌ビル店 열기" title="구글맵 — 函館うに むらかみ 日本生命札幌ビル店"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>점심 — 우니동 · 하코다테 우니무라카미</b> 니혼생명 삿포로빌딩점<span class="badge">예약 완료 · 변경</span></div>
+        <div class="detail">좌석만 예약(2인) · 니혼생명 삿포로빌딩 B1 · <span class="v">011-290-1000</span> · 런치 <span class="v">11:30~14:00(주문마감 13:30)</span> · <b>예약 시간 15분 초과 지연 시 취소</b> · 11·12월 연중무휴(공식 발표)</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">13:45</span>
+        <div class="what">식사 종료 → 지하철 스스키노 → <b>~14:05 짐 수령</b></div>
+        <div class="detail">스스키노 정류장은 호텔과 <b>같은 블록</b>(남4조통 · 2번 출구 쪽) — 걸어서 바로 승차</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">14:38</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%99%E3%81%99%E3%81%8D%E3%81%AE%E9%A7%85" target="_blank" rel="noopener" aria-label="구글맵에서 すすきの駅 열기" title="구글맵 — すすきの駅"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>카파라이너 승차 — 스스키노 정류장</b><span class="badge warn">11/28 17:00까지 예약 · 승차지 「스스키노」 지정</span></div>
+        <div class="detail">삿포로역 14:30발이 스스키노 <span class="v">14:38</span> 통과 · 약 50분 · 요금은 예약 화면 확인(삿포로역 기준 <span class="v">1,700엔</span>, 넷할인 1,460엔)</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">15:26</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%9A%E5%B1%B1%E6%B8%93%E7%AC%AC%E4%B8%80%E5%AF%B6%E4%BA%AD%E7%95%99%20%E7%BF%A0%E5%B1%B1%E4%BA%AD" target="_blank" rel="noopener" aria-label="구글맵에서 定山渓第一寶亭留 翠山亭 열기" title="구글맵 — 定山渓第一寶亭留 翠山亭"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>제1호텔앞 하차 → 스이잔테이 체크인</b> (~15:35)</div>
+        <div class="detail">체크인 <span class="v">15:00~</span> · 16:00 목표 여유 충족 · <b>예비: 14:38 놓치면 15:00발(스스키노 15:08 → 15:56 도착)</b></div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">17:30~</span>
+        <div class="what"><b>석식(플랜 포함)</b> · 야간 온천</div>
+        <div class="detail">석식 시간대 <span class="v">17:30~21:00</span>(공식 약관) · 식사 후 정산온천의 밤 온천</div>
+      </div>
+    </div>
+
+    <div class="day">
+      <div class="day-head">
+        <span class="d-no">DAY 3</span>
+        <h3>11/30 (월) · 여유 귀국 — JR 14:04발 고정</h3>
+        <div class="d-sub">인천 20:10 도착 · 공항 여유 2시간 14분</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">07:00</span>
+        <div class="what">조식 + 아침 온천·산책</div>
+        <div class="detail">조식 <span class="v">7:00~9:00</span>(공식 약관) · 하프뷔페 — <b>7:00~8:20</b> 여유 식사</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">09:00</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%9A%E5%B1%B1%E6%B8%93%E6%B8%A9%E6%B3%89" target="_blank" rel="noopener" aria-label="구글맵에서 定山渓温泉 열기" title="구글맵 — 定山渓温泉"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>스이잔테이 체크아웃</b> (여유) → 정산온천 거리 산책</div>
+        <div class="detail">체크아웃 11:00 기준보다 여유 있게 출발</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">09:46</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%9A%E5%B1%B1%E6%B8%93%20%E7%AC%AC%E4%B8%80%E3%83%9B%E3%83%86%E3%83%AB%E5%89%8D" target="_blank" rel="noopener" aria-label="구글맵에서 定山渓 第一ホテル前 열기" title="구글맵 — 定山渓 第一ホテル前"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>카파라이너 승차 — 제1호텔앞 정류장</b><span class="badge warn">예약 시 하차지 「스스키노」 지정</span></div>
+        <div class="detail">복귀편은 스스키노 <b>하차 가능</b>(공식 시각표) — 짐 없이 삿포로 시내로 복귀</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">10:44</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=SAPPORO%20STREAM%20HOTEL" target="_blank" rel="noopener" aria-label="구글맵에서 SAPPORO STREAM HOTEL 열기" title="구글맵 — SAPPORO STREAM HOTEL"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>스스키노 하차 → 스트림 호텔 짐 맡기기</b> (도보 2~3분)</div>
+        <div class="detail">10:50~11:25 스스키노·탄키코지 가벼운 산책 — <b>짐은 아직 호텔에</b></div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">11:30</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B9%E3%83%BC%E3%83%97%E3%82%AB%E3%83%AA%E3%83%BC%20Suage%2B%20%E6%9C%AD%E5%B9%8C" target="_blank" rel="noopener" aria-label="구글맵에서 スープカリー Suage+ 札幌 열기" title="구글맵 — スープカリー Suage+ 札幌"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what"><b>점심 — 수프카레 스아게+ (Suage+) 워크인</b></div>
+        <div class="detail">남4조서5-6-1 도志松빌딩 2F(호텔 한 블록) · 월 <span class="v">11:30~20:30</span> · 연중무휴(공식) · 인기점이라 오픈 직후 진입 권장 · <span class="v">011-233-2911</span></div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">12:50</span>
+        <div class="what">호텔 짐 수령 → 지하철 출구5 → 삿포로 13:10</div>
+        <div class="detail">짐을 들고 다니는 구간 <b>0</b> — 최후 한 번만 회수</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">13:10</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=JR%E3%82%BF%E3%83%AF%E3%83%BC" target="_blank" rel="noopener" aria-label="구글맵에서 JRタワー 열기" title="구글맵 — JRタワー"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what">JR타워·스테라플레이스 쇼핑</div>
+        <div class="detail">13:10~13:45 · <b>13:50 5번 홈</b>(신치토세 방면)으로 이동</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">14:04</span>
+        <div class="what"><b>JR 快速エアポート 출발</b><span class="badge">기준선 고정</span></div>
+        <div class="detail">최속 37분 → <b>CTS 14:41 도착</b> · 항공 16:55 대비 <b>여유 2시간 14분</b> · 낮 시간대 시간당 6편 — 놓쳐도 14:18/14:34발로 회복</div>
+      </div>
+      <div class="ev"><span class="node"></span><span class="time">~15:00</span>
+<a class="map-btn" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%96%B0%E5%8D%83%E6%AD%B3%E7%A9%BA%E6%B8%AF" target="_blank" rel="noopener" aria-label="구글맵에서 新千歳空港 열기" title="구글맵 — 新千歳空港"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+        <div class="what">체크인 완료 → 면세·게이트 대기</div>
+        <div class="detail">여유 있는 공항 시간 — 탑승수속 마감은 항공사 안내 기준</div>
+      </div>
+      <div class="ev move"><span class="node"></span><span class="time">16:55</span>
+        <div class="what"><b>KE766</b> 신치토세 출발 → <b>20:10 인천 도착</b></div>
+        <div class="detail">여유 있는 귀국 완료 — 인천에서 저녁</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 03 예약 체크리스트 ================= -->
+  <section class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2>예약 체크리스트</h2>
+      <div class="sub">2026. 10. 28 기준</div>
+    </div>
+
+    <div class="cl-grid">
+      <div class="cl-card done">
+        <h5>예약 완료 <span class="ok">✓</span></h5>
+        <div class="item">항공 왕복 — 11/28(토) KE765 · 11/30(월) KE766</div>
+        <div class="item">삿포로 스트림 호텔 11/28 1박</div>
+        <div class="item">蟹座(카니자) 11/28 18:30 — 게 무한리필 2인</div>
+        <div class="item">우니무라카미 11/29(일) 12:45 — 좌석만 2인</div>
+        <div class="item">스이잔테이 11/29 1박 — 석식 포함</div>
+      </div>
+      <div class="cl-card todo">
+        <h5>예약 필요 — 카파라이너 2편</h5>
+        <div class="item"><b>11/29(일)</b> 「스스키노」 14:38 승차 → 「제1호텔앞」 15:26 하차</div>
+        <div class="item"><b>11/30(월)</b> 「제1호텔앞」 9:46 승차 → 「스스키노」 10:44 하차</div>
+        <div class="item"><b>jotetsu.quicktrip.jp/buy</b> · 예약 마감 <b>전날 17:00</b></div>
+        <div class="item">승차·하차 정류장 예약 화면에서 <b>정확히 지정</b> (지정 정류장 외 승하차 불가)</div>
+      </div>
+      <div class="cl-card local">
+        <h5>현지에서 확인</h5>
+        <div class="item">스트림 호텔 체크인 시 <b>짐보관</b> (D2·D3 연속 이용)</div>
+        <div class="item">여행 전날 <b>JR 시각표 앱 재확인</b> — 11월 다이아 개정 가능성</div>
+        <div class="item"><b>숙박세 현금</b> — 1인 1박 300~1,000엔</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
